@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <a href="{{ path('item', {'id': product.id}) }}" class="itemClass text-decoration-none">
+        <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">image</text></svg>
+
+            <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    "{{ product.name }}"<br>
+                    Цена: {{ product.price }}
+                    <div class="btn-group">
+                        <a href="{{ path('item', {'id': product.id}) }}"><button type="button" class="btn btn-sm btn-outline-secondary">Перейти к товару</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

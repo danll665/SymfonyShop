@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController{% endblock %}
+
+{% block body %}
+    {{ product.id }}. {{ product.name }}
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col-auto d-none d-lg-block">
+                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Image</text></svg>
+            </div>
+
+            <div class="col p-4 d-flex flex-column position-static">
+                Название: {{ product.name }}<br>
+
+                Автор: {{ product.author }} <br>
+
+                Цена: {{ product.price }} <br>
+
+                Описание: {{ product.description }} <br>
+
+                Жанр: {{ product.genre }} <br>
+
+                Тип: {{ product.type }} <br>
+
+                Год: {{ product.year }}
+                <a href="{{ path('cartAdd', {'id': id}) }}" class="btn btn-dark mt-4" style="width: 300px ">Добавить в корзину</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

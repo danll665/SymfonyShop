@@ -1,19 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item {{ app.request.get('_route') == 'index' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('index') }}">Home</a>
+                        </li>
+
+                        <li class="nav-item {{ app.request.get('_route') == 'shop' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('list') }}">Shop</a>
+                        </li>
+                    </ul>
+                    <div class="mt-2 mt-md-0">
+                    <a href={{ path('cart') }}><button type="button" class="btn btn-success">Корзина</button></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
     <body>
-        {% block body %}{% endblock %}
+
+{#    {% block javascripts %}#}
+{#    <script src="{{ asset ('statics/js//bootstrap.min.js') }}" ></script>#}
+{#    {% endblock %}#}
+
+
+
+    <div class="col-lg-8 mx-auto p-3 py-md-5">
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="pt-5 my-5 text-muted border-top">
+            SymfonyShop
+        </footer>
+    </div>
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js?v=513" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
+
 </html>
